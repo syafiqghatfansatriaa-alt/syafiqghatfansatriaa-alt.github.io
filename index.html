@@ -1,137 +1,78 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#071426">
-  <meta name="description" content="The Digital Leadership Space — perjalanan belajar, kepemimpinan, dan kontribusi Syafiq Ghatfan Satria.">
-  <title>Syafiq Ghatfan Satria — The Digital Leadership Space</title>
+  <title>Syafiq Ghatfan Satria | The Digital Leadership Space</title>
+  <meta name="description" content="A journey of learning, leadership, and contribution.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&family=Playfair+Display:wght@600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="ambient"></div>
-  <section id="portal" class="portal" aria-label="Opening portal">
-    <div class="portal-grid"></div><div class="portal-ring ring-one"></div><div class="portal-ring ring-two"></div>
-    <div class="portal-content">
+
+  <div id="opening" class="opening">
+    <div class="stars"></div>
+    <div class="portal portal-back"></div>
+    <div class="portal portal-front"></div>
+    <div class="opening-content">
       <p class="eyebrow">WELCOME TO MY DIGITAL WORLD</p>
-      <div class="portal-mark">SGS<span>✦</span></div>
-      <h1>SYAFIQ GHATFAN SATRIA</h1>
-      <p class="portal-subtitle">THE DIGITAL LEADERSHIP SPACE</p>
-      <p class="portal-copy">A journey of learning, leadership, and contribution.</p>
-      <button id="enterButton" class="primary-btn">ENTER MY WORLD <span>↗</span></button>
-      <button id="skipButton" class="text-btn">Skip intro</button>
+      <h1>SYAFIQ<br><span>GHATFAN SATRIA</span></h1>
+      <p class="tagline">THE DIGITAL LEADERSHIP SPACE</p>
+      <p class="subline">A journey of learning, leadership, and contribution.</p>
+      <button id="enterBtn" class="gold-button">ENTER MY WORLD ↗</button>
     </div>
-    <div class="portal-bottom">LEARN · LEAD · CONTRIBUTE</div>
-  </section>
+    <button id="skipBtn" class="skip-button">SKIP INTRO</button>
+  </div>
 
-  <header class="topbar">
-    <a class="brand" href="#home" aria-label="Home"><span>SGS</span><small> DIGITAL SPACE</small></a>
-    <button id="menuToggle" class="menu-toggle" aria-label="Buka menu">☰</button>
-    <nav id="mainNav">
-      <a href="#home">Home</a><a href="#about">About</a><a href="#leadership">Leadership</a>
-      <a href="#achievements">Achievements</a><a href="#activities">Activities</a>
-      <a href="#gallery">Gallery</a><a href="#contact">Contact</a><a href="#support">Support</a>
-    </nav>
-  </header>
-
-  <main id="mainContent">
-    <section id="home" class="hero section-wrap">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="pulse"></span> STUDENT LEADER · YOUTH DEVELOPMENT</p>
-        <h1>Ideas become<br><em>meaningful action.</em></h1>
-        <p class="lead">Membangun kontribusi, mengembangkan kepemimpinan, dan bertumbuh bersama generasi muda.</p>
-        <div class="hero-actions"><a class="primary-btn" href="#about">EXPLORE MY JOURNEY <span>↗</span></a><a class="secondary-btn" href="#leadership">Discover leadership</a></div>
-        <div class="hero-note"><span class="gold-line"></span> LEARN. LEAD. CONTRIBUTE.</div>
+  <main id="mainSpace" class="main-space hidden">
+    <header class="topbar">
+      <a href="#" class="brand">SGS<span>.</span></a>
+      <div class="top-actions">
+        <button id="homeBtn" aria-label="Home">⌂</button>
+        <button id="soundBtn" aria-label="Sound">♪</button>
       </div>
-      <div class="hero-visual">
-        <div class="photo-frame"><img src="assets/profile.jpg" alt="Foto profil Syafiq Ghatfan Satria"></div>
-        <div class="floating-tag tag-top">THE JOURNEY<br><b>CONTINUES</b></div>
-        <div class="floating-tag tag-bottom">KUBU RAYA · WEST KALIMANTAN</div>
-      </div>
-    </section>
+    </header>
 
-    <section class="intro-strip">
-      <p>“Kepemimpinan bukan hanya tentang posisi, tetapi tentang keberanian untuk mendengar, belajar, dan memberi manfaat.”</p>
-    </section>
-
-    <section id="about" class="section-wrap content-section">
-      <div class="section-heading"><p class="eyebrow">01 / THE PERSON BEHIND THE JOURNEY</p><h2>A Story Behind <em>The Journey.</em></h2><p class="section-desc">Mengenal pribadi, nilai, dan perjalanan yang terus dibangun.</p></div>
-      <div class="about-grid">
-        <img class="about-photo" src="assets/profile.jpg" alt="Potret pribadi">
-        <div><h3>Growing through experience.</h3><p>Saya adalah pelajar SMAN 2 Sungai Kakap, Kabupaten Kubu Raya, Kalimantan Barat. Saya tertarik pada kepemimpinan, organisasi, public speaking, literasi, dan pengembangan generasi muda.</p><p>Bagi saya, setiap pengalaman adalah ruang belajar. Saya ingin membangun lingkungan yang saling merangkul, memberi ruang bagi suara pelajar, dan mengubah gagasan menjadi kontribusi nyata.</p>
-          <div class="value-grid"><span>LEARNING</span><span>SOLIDARITY</span><span>LEADERSHIP</span><span>CONTRIBUTION</span></div>
+    <section class="hero">
+      <p class="eyebrow">THE DIGITAL LEADERSHIP SPACE</p>
+      <h2>Explore My <span>World</span></h2>
+      <p>Learning. Leading. Contributing.</p>
+      <div class="orbit-scene">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="core">
+          <span>SGS</span>
+          <small>MY JOURNEY</small>
         </div>
       </div>
-      <div class="timeline"><div><b>2025</b><span>Lulus dari SMPN 2 Sungai Kakap</span></div><div><b>2026 — NOW</b><span>SMAN 2 Sungai Kakap · aktif dalam organisasi dan kegiatan pelajar</span></div><div><b>2027</b><span>Target pengembangan diri dan kontribusi pemuda Kubu Raya</span></div></div>
+      <p class="instruction">Pilih salah satu ruang untuk menjelajahi perjalananku.</p>
     </section>
 
-    <section id="leadership" class="section-wrap content-section dark-panel">
-      <div class="section-heading"><p class="eyebrow">02 / LEADING THROUGH CONTRIBUTION</p><h2>The Art of <em>Leadership.</em></h2><p class="section-desc">Pengalaman organisasi adalah ruang untuk belajar bekerja sama dan bertanggung jawab.</p></div>
-      <div class="role-grid">
-        <article class="role-card featured"><span class="role-index">01</span><p class="eyebrow">SCHOOL LEADERSHIP</p><h3>Ketua MPK</h3><p>SMAN 2 Sungai Kakap</p><small>Peran kepemimpinan pelajar</small></article>
-        <article class="role-card"><span class="role-index">02</span><p class="eyebrow">SCOUTING</p><h3>Ketua Pramuka</h3><p>SMAN 2 Sungai Kakap</p></article>
-        <article class="role-card"><span class="role-index">03</span><p class="eyebrow">COMMUNITY</p><h3>Ketua Remaja Masjid</h3><p>Jam’ul Fallah</p></article>
-        <article class="role-card"><span class="role-index">04</span><p class="eyebrow">ORGANIZATION</p><h3>Anggota DKR</h3><p>Dewan Kerja Ranting</p></article>
-        <article class="role-card"><span class="role-index">05</span><p class="eyebrow">VOLUNTEERING</p><h3>Anggota PMR</h3><p>Palang Merah Remaja</p></article>
-        <article class="role-card"><span class="role-index">06</span><p class="eyebrow">SCHOOL & COMMUNITY</p><h3>ROHIS · Drumband</h3><p>Partisipasi kegiatan organisasi</p></article>
-      </div>
-      <p class="note">Peran dan keanggotaan ditampilkan berdasarkan informasi yang tersedia dan dapat diperbarui sesuai dokumen terbaru.</p>
+    <section class="navigation-grid">
+      <button class="nav-card" data-page="about"><span>01</span><strong>About Me</strong><small>Who I am</small></button>
+      <button class="nav-card" data-page="leadership"><span>02</span><strong>Leadership</strong><small>Organization</small></button>
+      <button class="nav-card" data-page="achievements"><span>03</span><strong>Achievements</strong><small>Recognition</small></button>
+      <button class="nav-card" data-page="activities"><span>04</span><strong>Activities</strong><small>Initiatives</small></button>
+      <button class="nav-card" data-page="gallery"><span>05</span><strong>Gallery</strong><small>Documentation</small></button>
+      <button class="nav-card" data-page="contact"><span>06</span><strong>Contact</strong><small>Connect with me</small></button>
+      <button class="nav-card" data-page="support"><span>07</span><strong>Support My Journey</strong><small>Be part of the journey</small></button>
+      <button class="nav-card" data-page="vision"><span>08</span><strong>My Vision</strong><small>Future direction</small></button>
     </section>
 
-    <section id="achievements" class="section-wrap content-section">
-      <div class="section-heading"><p class="eyebrow">03 / EVERY MILESTONE HAS A STORY</p><h2>The Hall of <em>Achievement.</em></h2><p class="section-desc">Penghargaan, sertifikat, dan pengalaman yang menjadi bagian dari proses belajar.</p></div>
-      <div class="achievement-grid">
-        <article class="achievement-card"><span class="medal">01</span><h3>Juara 1 Pidato / Tausiyah</h3><p>Prestasi tingkat SMP dan kegiatan antarkelas, sesuai sertifikat yang dimiliki.</p></article>
-        <article class="achievement-card"><span class="medal">02</span><h3>Juara 2 Berpuisi</h3><p>Kompetisi tingkat SMP.</p></article>
-        <article class="achievement-card"><span class="medal">03</span><h3>Juara 3 Fashion Show</h3><p>Kegiatan antarkelas.</p></article>
-        <article class="achievement-card"><span class="medal">04</span><h3>Peserta Lomba Renang</h3><p>Pengalaman mengikuti kompetisi tingkat kota; bukan klaim peraih medali.</p></article>
-      </div>
-      <div class="certificate-feature"><img src="assets/gema-muharram-certificate.jpg" alt="Piagam penghargaan panitia Gema Muharram 1448 H 2026 M"><div><p class="eyebrow">CERTIFICATE · 2026</p><h3>Panitia Gema Muharram 1448 H / 2026 M</h3><p>Piagam penghargaan atas dedikasi dan kontribusi sebagai panitia kegiatan Gema Muharram yang diselenggarakan pada 3–7 Juli 2026 di Masjid Safinatul Islam.</p></div></div>
-      <div class="experience-callout"><b>Pengalaman kegiatan</b><p>Petugas Pleton pada peringatan Sumpah Pemuda 2026 di Kantor Bupati Kubu Raya — pengalaman partisipasi, bukan penghargaan lomba.</p></div>
+    <section id="contentPanel" class="content-panel hidden">
+      <button id="backBtn" class="back-button">← BACK TO MY WORLD</button>
+      <div id="pageContent"></div>
     </section>
 
-    <section id="activities" class="section-wrap content-section dark-panel">
-      <div class="section-heading"><p class="eyebrow">04 / TURNING THOUGHTS INTO ACTION</p><h2>Beyond <em>Ideas.</em></h2><p class="section-desc">Gagasan yang sedang dipersiapkan untuk memberi ruang partisipasi dan manfaat.</p></div>
-      <div class="initiative-grid">
-        <article class="initiative-card"><span class="status">PLANNED</span><h3>Sampah yang Bijak ialah Sampah yang Bernilai</h3><p>Gagasan pengumpulan dan pemilahan sampah daur ulang antarkelas, pencatatan hasil, serta pengelolaan manfaat bersama. Pelaksanaan menunggu pembahasan dan persetujuan sekolah.</p></article>
-        <article class="initiative-card"><span class="status">PLANNED</span><h3>Siswa Bersuara, Kami Mengolah</h3><p>Gagasan kotak aspirasi untuk menghimpun masukan pelajar, mengelompokkan isu, dan membahas tindak lanjut bersama pihak terkait.</p></article>
-      </div>
-      <div class="activity-row"><img src="assets/pramuka-kantor-bupati.jpg" alt="Dokumentasi kegiatan Pramuka di Kantor Bupati Kubu Raya"><div><p class="eyebrow">DOCUMENTED EXPERIENCE</p><h3>Learning beyond the classroom</h3><p>Dokumentasi kegiatan bersama Pramuka di lingkungan Kantor Bupati Kubu Raya.</p></div></div>
-    </section>
-
-    <section id="gallery" class="section-wrap content-section">
-      <div class="section-heading"><p class="eyebrow">05 / MOMENTS · MEMORIES · MILESTONES</p><h2>The Visual <em>Chronicle.</em></h2><p class="section-desc">Potongan perjalanan dalam organisasi, kegiatan, dan kebersamaan.</p></div>
-      <div class="filter-row" role="group" aria-label="Filter galeri"><button class="filter active" data-filter="all">All moments</button><button class="filter" data-filter="organization">Organization</button><button class="filter" data-filter="scouting">Pramuka</button><button class="filter" data-filter="community">Community</button></div>
-      <div class="gallery-grid">
-        <figure class="gallery-item" data-category="organization"><img src="assets/pmr-team.jpg" alt="Foto bersama anggota PMR"><figcaption><b>PMR</b><span>Dokumentasi kebersamaan anggota</span></figcaption></figure>
-        <figure class="gallery-item" data-category="scouting"><img src="assets/pramuka-team.jpg" alt="Foto bersama anggota Pramuka"><figcaption><b>Pramuka</b><span>Kebersamaan dan pengalaman organisasi</span></figcaption></figure>
-        <figure class="gallery-item" data-category="scouting"><img src="assets/pramuka-kantor-bupati.jpg" alt="Pramuka di Kantor Bupati Kubu Raya"><figcaption><b>Pramuka · Kubu Raya</b><span>Dokumentasi kegiatan</span></figcaption></figure>
-        <figure class="gallery-item" data-category="scouting"><img src="assets/pramuka-togetherness.jpg" alt="Momen kebersamaan Pramuka"><figcaption><b>Moments together</b><span>Kebersamaan rekan Pramuka</span></figcaption></figure>
-        <figure class="gallery-item" data-category="organization"><img src="assets/drumband-team.jpg" alt="Foto bersama kelompok drumband"><figcaption><b>Drumband</b><span>Dokumentasi kelompok</span></figcaption></figure>
-        <figure class="gallery-item" data-category="community"><img src="assets/cultural-event.jpg" alt="Foto bersama dalam kegiatan pakaian adat"><figcaption><b>Cultural moments</b><span>Dokumentasi kegiatan budaya</span></figcaption></figure>
-        <figure class="gallery-item" data-category="community"><img src="assets/togetherness-night.jpg" alt="Foto kebersamaan bersama teman-teman"><figcaption><b>Moments of friendship</b><span>Dokumentasi kebersamaan</span></figcaption></figure>
-      </div>
-      <p class="note">Foto ditampilkan sebagai dokumentasi pengalaman. Keterangan kegiatan yang belum terverifikasi tidak dibuat-buat.</p>
-    </section>
-
-    <section id="contact" class="section-wrap content-section dark-panel">
-      <div class="section-heading"><p class="eyebrow">06 / EVERY JOURNEY CONNECTS</p><h2>The Connection <em>Point.</em></h2><p class="section-desc">Terbuka untuk komunikasi, pertukaran gagasan, dan kolaborasi positif.</p></div>
-      <div class="contact-grid"><div><p class="eyebrow">CONNECT WITH ME</p><a class="contact-link" href="https://www.instagram.com/ghatfan_satria1/" target="_blank" rel="noopener">Instagram ↗</a><a class="contact-link" href="mailto:syafiqghatfansatriaa@gmail.com">Email ↗</a><p class="muted">Kubu Raya, Kalimantan Barat, Indonesia</p></div>
-        <form id="contactForm"><label>Nama<input name="name" required maxlength="80" placeholder="Nama kamu"></label><label>Email<input name="email" type="email" required maxlength="120" placeholder="email@contoh.com"></label><label>Subjek<input name="subject" required maxlength="100" placeholder="Topik pesan"></label><label>Pesan<textarea name="message" required maxlength="1500" rows="4" placeholder="Tuliskan pesan..."></textarea></label><button class="primary-btn" type="submit">PREPARE EMAIL <span>↗</span></button><small class="note">Form ini membuka aplikasi email perangkatmu; pesan tidak disimpan di website.</small></form>
-      </div>
-    </section>
-
-    <section id="support" class="section-wrap content-section support-section">
-      <div class="support-orb">SGS</div><div class="section-heading"><p class="eyebrow">07 / SUPPORT MY JOURNEY</p><h2>Your Support. <em>Greater Possibilities.</em></h2><p class="section-desc">Dukungan sukarela untuk membantu pengembangan perangkat pribadi agar proses dokumentasi, fotografi, penyuntingan video, dan karya digital dapat berkembang.</p></div>
-      <div class="support-copy"><p>Kontribusi ini ditujukan untuk peningkatan perangkat pribadi, bukan penggalangan dana sekolah atau organisasi. Dukungan bersifat sukarela dan tidak menjanjikan imbalan.</p><div class="support-actions"><a class="primary-btn" href="https://sociabuzz.com/syafiqgs/tribe" target="_blank" rel="noopener">SUPPORT VIA SOCIABUZZ ↗</a><a class="secondary-btn" href="https://saweria.co/syafiqco" target="_blank" rel="noopener">SUPPORT VIA SAWERIA ↗</a></div><small class="note">Penggunaan platform dan transaksi mengikuti ketentuan usia serta pembayaran yang berlaku, dengan pendampingan orang tua/wali.</small></div>
-    </section>
+    <footer>
+      <p>© 2026 SYAFIQ GHATFAN SATRIA</p>
+      <p>LEARN · LEAD · CONTRIBUTE</p>
+    </footer>
   </main>
 
-  <footer><a class="brand" href="#home"><span>SGS</span><small> DIGITAL SPACE</small></a><p>© <span id="year"></span> Syafiq Ghatfan Satria · Learn. Lead. Contribute.</p><a href="#home">Back to top ↑</a></footer>
-  <div id="lightbox" class="lightbox" aria-hidden="true"><button id="lightboxClose" aria-label="Tutup">×</button><img id="lightboxImage" alt=""></div>
   <script src="app.js"></script>
 </body>
 </html>
