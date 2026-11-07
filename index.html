@@ -191,5 +191,19 @@
   <script src="cinematic-motion.js"></script>
   <script src="owner-portal.js"></script>
   <script src="ultimate-upgrade.js"></script>
+  <audio id="backgroundMusic" loop>
+  <source src="assets/background.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const music = document.getElementById("backgroundMusic");
+  music.volume = 0.35;
+
+  window.addEventListener("load", () => {
+    music.play().catch(() => {
+      console.log("Autoplay menunggu izin browser.");
+    });
+  });
+</script>
 </body>
 </html>
