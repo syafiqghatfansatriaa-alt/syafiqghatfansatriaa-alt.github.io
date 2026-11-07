@@ -1,0 +1,190 @@
+/* SGS Cinematic Motion Add-on — layered on top of the existing Website 2.0 */
+:root {
+  --sgs-gold: #dfbd70;
+  --sgs-blue: #55a9ef;
+  --sgs-navy: #071426;
+}
+.portal {
+  isolation: isolate;
+  perspective: 1100px;
+}
+.portal::before {
+  content: "";
+  position: absolute;
+  width: min(78vw, 680px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid #dfbd7060;
+  box-shadow: 0 0 24px #dfbd7020, inset 0 0 45px #55a9ef18;
+  transform: rotateX(68deg) scale(.82);
+  animation: sgs-portal-breathe 5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+.portal::after {
+  content: "";
+  position: absolute;
+  width: min(58vw, 500px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid #55a9ef65;
+  box-shadow: 0 0 35px #55a9ef22;
+  transform: rotateX(68deg) rotateZ(25deg) scale(.9);
+  animation: sgs-orbit 22s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+.portal-content > * {
+  animation: sgs-intro-rise .9s both;
+}
+.portal-content > :nth-child(1) { animation-delay: .2s; }
+.portal-content > :nth-child(2) { animation-delay: .45s; }
+.portal-content > :nth-child(3) { animation-delay: .7s; }
+.portal-content > :nth-child(4) { animation-delay: .95s; }
+.portal-content > :nth-child(5) { animation-delay: 1.15s; }
+.portal-content > :nth-child(6) { animation-delay: 1.4s; }
+.portal-content > :nth-child(7) { animation-delay: 1.55s; }
+
+.portal.leaving .portal-ring,
+.portal.leaving::before,
+.portal.leaving::after {
+  animation: sgs-portal-collapse .9s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.portal.leaving .portal-content {
+  animation: sgs-portal-content-out .55s ease-in forwards;
+}
+.topbar nav a {
+  position: relative;
+  transform: translateY(0);
+  transition: color .25s ease, transform .35s ease;
+}
+.topbar nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -7px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--sgs-gold), var(--sgs-blue));
+  transition: right .35s ease;
+}
+.topbar nav a:hover { transform: translateY(-2px); }
+.topbar nav a:hover::after { right: 0; }
+
+.content-section,
+.hero,
+.intro-strip {
+  transform-style: preserve-3d;
+}
+.sgs-reveal {
+  opacity: 0;
+  transform: translate3d(0, 34px, 0) scale(.985);
+  filter: blur(5px);
+  transition: opacity .85s ease, transform .85s cubic-bezier(.2,.75,.2,1), filter .85s ease;
+}
+.sgs-reveal.sgs-visible {
+  opacity: 1;
+  transform: translate3d(0,0,0) scale(1);
+  filter: blur(0);
+}
+.role-card,
+.achievement-card,
+.initiative-card,
+.gallery-item,
+.certificate-feature,
+.activity-row,
+.about-photo,
+.photo-frame {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform .45s cubic-bezier(.2,.7,.2,1), border-color .35s ease, box-shadow .35s ease;
+}
+.role-card:hover,
+.achievement-card:hover,
+.initiative-card:hover,
+.gallery-item:hover {
+  transform: perspective(900px) translateY(-7px) rotateX(2deg);
+  border-color: #dfbd7090;
+  box-shadow: 0 20px 45px #0005, 0 0 22px #55a9ef12;
+}
+.photo-frame {
+  box-shadow: 0 30px 75px #0008, 0 0 35px #55a9ef16;
+}
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid #dfbd7045;
+  pointer-events: none;
+}
+.sgs-orbit-accent {
+  position: absolute;
+  width: 115%;
+  height: 115%;
+  left: -7.5%;
+  top: -7.5%;
+  border: 1px solid #55a9ef40;
+  border-radius: 50%;
+  transform: rotateX(68deg);
+  pointer-events: none;
+  animation: sgs-orbit 18s linear infinite;
+}
+.sgs-motion-toggle {
+  position: fixed;
+  z-index: 15;
+  right: 16px;
+  bottom: 16px;
+  border: 1px solid #dfbd7080;
+  border-radius: 30px;
+  padding: 9px 13px;
+  background: #071426e8;
+  color: #e8d39e;
+  font: 600 11px Inter, sans-serif;
+  letter-spacing: .04em;
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+}
+.sgs-motion-toggle:focus-visible {
+  outline: 2px solid var(--sgs-blue);
+  outline-offset: 3px;
+}
+@keyframes sgs-portal-breathe {
+  0%,100% { opacity: .45; transform: rotateX(68deg) scale(.78); }
+  50% { opacity: .95; transform: rotateX(68deg) scale(.9); }
+}
+@keyframes sgs-orbit {
+  from { rotate: 0deg; }
+  to { rotate: 360deg; }
+}
+@keyframes sgs-intro-rise {
+  from { opacity: 0; transform: translateY(22px); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes sgs-portal-collapse {
+  to { opacity: 0; transform: scale(1.5) rotate(18deg); filter: blur(12px); }
+}
+@keyframes sgs-portal-content-out {
+  to { opacity: 0; transform: translateY(-18px) scale(.98); filter: blur(8px); }
+}
+@media (max-width: 850px) {
+  .sgs-motion-toggle { right: 10px; bottom: 10px; }
+  .role-card:hover, .achievement-card:hover, .initiative-card:hover, .gallery-item:hover {
+    transform: translateY(-3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portal::before, .portal::after, .portal-content > *, .sgs-orbit-accent {
+    animation: none !important;
+  }
+  .sgs-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  .role-card, .achievement-card, .initiative-card, .gallery-item, .certificate-feature,
+  .activity-row, .about-photo, .photo-frame, .topbar nav a {
+    transition: none !important;
+    transform: none !important;
+  }
+}
