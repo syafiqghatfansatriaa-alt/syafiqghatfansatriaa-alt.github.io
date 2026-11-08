@@ -145,17 +145,45 @@
 
         const correct = index === item.correct;
 
-        if (correct) {
-          score += 10;
-          button.classList.add("correct");
-          feedback.textContent = `✓ Benar! ${item.explanation}`;
-        } else {
-          button.classList.add("wrong");
-          feedback.textContent =
-            `Belum tepat. Jawaban benar: ${item.answers[item.correct]}. ${item.explanation}`;
+        
+if (correct) {
+  score += 10;
+  button.classList.add("correct");
 
-          answersBox.children[item.correct].classList.add("correct");
-        }
+  feedback.textContent =
+    `✓ Benar! ${item.explanation}`;
+
+  const vektor = document.getElementById("sgswVektorLine");
+  const kiboy = document.getElementById("sgswKiboyLine");
+
+  if (vektor) {
+    vektor.textContent = "Hebat! Kamu berhasil memecahkan tantangan ini!";
+  }
+
+  if (kiboy) {
+    kiboy.textContent = "Analisis tepat! Kamu memperoleh 10 poin.";
+  }
+
+} else {
+  button.classList.add("wrong");
+
+  feedback.textContent =
+    `Belum tepat. Jawaban benar: ${item.answers[item.correct]}. ${item.explanation}`;
+
+  const vektor = document.getElementById("sgswVektorLine");
+  const kiboy = document.getElementById("sgswKiboyLine");
+
+  if (vektor) {
+    vektor.textContent = "Tidak apa-apa! Coba tantangan berikutnya.";
+  }
+
+  if (kiboy) {
+    kiboy.textContent = "Perhatikan petunjuk dan pelajari jawaban yang benar.";
+  }
+
+  answersBox.children[item.correct].classList.add("correct");
+}
+
 
         Array.from(answersBox.children).forEach(choice => {
           choice.disabled = true;
