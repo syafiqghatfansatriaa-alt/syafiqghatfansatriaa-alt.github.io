@@ -1,7 +1,11 @@
 
 (() => {
   const button = document.getElementById("sgswOwnerAccess");
-  if (!button) return;
+  const world = document.getElementById("minigame-world");
+  const dashboard = document.getElementById("sgsDeveloperDashboard");
+  const backButton = document.getElementById("sgswBackToWorld");
+
+  if (!button || !world || !dashboard || !backButton) return;
 
   const temporaryCode = "Scorpioon161110";
 
@@ -13,17 +17,25 @@
     if (enteredCode === null) return;
 
     if (enteredCode === temporaryCode) {
-      document.body.classList.add("sgsw-owner-mode");
-      button.textContent = "✓ OWNER MODE ACTIVE";
-      button.disabled = true;
+      world.style.display = "none";
+      dashboard.classList.add("active");
 
-      document.querySelectorAll(".sgsw-status").forEach(status => {
-        status.textContent = "OWNER MODE · DEVELOPMENT";
+      window.scrollTo({
+        top: dashboard.offsetTop,
+        behavior: "smooth"
       });
-
-      alert("Owner access berhasil dibuka!");
     } else {
       alert("Kode tidak sesuai. Akses ditolak.");
     }
+  });
+
+  backButton.addEventListener("click", () => {
+    dashboard.classList.remove("active");
+    world.style.display = "";
+
+    world.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
   });
 })();
