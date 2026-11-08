@@ -1,0 +1,135 @@
+
+/* SGS DEVELOPER DASHBOARD */
+
+.sgsw-dashboard {
+  display: none;
+  max-width: 1100px;
+  margin: 35px auto;
+  padding: 25px;
+  color: #f5f7fb;
+  animation: sgsDashboardIn .65s ease both;
+}
+
+.sgsw-dashboard.active {
+  display: block;
+}
+
+.sgsw-dashboard-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.sgsw-dashboard-header span {
+  color: #e4c67f;
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.sgsw-dashboard-header h2 {
+  font-size: clamp(25px, 5vw, 42px);
+  margin: 12px 0;
+}
+
+.sgsw-dashboard-header p {
+  color: #aebed0;
+  font-size: 13px;
+}
+
+.sgsw-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 17px;
+}
+
+.sgsw-dev-card {
+  padding: 24px;
+  min-height: 190px;
+  border: 1px solid #75baff55;
+  border-radius: 19px;
+  background: linear-gradient(145deg, #193958, #091629);
+  transition: .3s ease;
+}
+
+.sgsw-dev-card:hover {
+  transform: translateY(-5px);
+  border-color: #e4c67f;
+  box-shadow: 0 15px 35px #0005;
+}
+
+.sgsw-dev-card .dev-icon {
+  font-size: 30px;
+}
+
+.sgsw-dev-card small {
+  display: block;
+  color: #e4c67f;
+  letter-spacing: 1px;
+  margin-top: 12px;
+}
+
+.sgsw-dev-card h3 {
+  margin: 9px 0;
+  font-size: 19px;
+}
+
+.sgsw-dev-card p {
+  color: #b5c7db;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.sgsw-dev-status {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 7px 11px;
+  border-radius: 20px;
+  background: #dfbd7018;
+  color: #f0d38d;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.sgsw-dashboard-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.sgsw-dashboard-back {
+  padding: 13px 22px;
+  border: 1px solid #dfbd70;
+  border-radius: 30px;
+  color: #f0d38d;
+  background: #ffffff0b;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.sgsw-dashboard-back:hover {
+  background: #dfbd7020;
+}
+
+@keyframes sgsDashboardIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media(max-width: 600px) {
+  .sgsw-dashboard {
+    padding: 18px 5px;
+  }
+
+  .sgsw-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sgsw-dev-card {
+    min-height: 160px;
+  }
+}
