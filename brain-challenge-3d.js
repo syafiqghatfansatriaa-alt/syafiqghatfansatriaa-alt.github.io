@@ -161,22 +161,31 @@
       animate();
 
       console.log("SGS 3D LIBRARY: READY");
+} catch (error) {
+  console.error("SGS 3D Library Error:", error);
 
-    } catch (error) {
-      console.error("SGS 3D Library Error:", error);
+  const errorBox = document.createElement("div");
 
-      world.innerHTML = `
-        <div style="
-          padding:24px;
-          color:#9ecfff;
-          text-align:center;
-        ">
-          3D environment could not be loaded.
-          Please check your internet connection.
-        </div>
-      `;
+  errorBox.style.cssText = `
+    position:fixed;
+    top:12px;
+    left:12px;
+    right:12px;
+    z-index:999999;
+    padding:16px;
+    border:1px solid #ff6464;
+    border-radius:12px;
+    background:#250d18;
+    color:#ffffff;
+    font-size:13px;
+    overflow-wrap:anywhere;
+  `;
+
+  errorBox.textContent =
+    "SGS 3D ERROR: " + (error.message || String(error));
+
+  document.body.appendChild(errorBox);
     }
-  }
 
   /* ---------- LIGHTING ---------- */
 
