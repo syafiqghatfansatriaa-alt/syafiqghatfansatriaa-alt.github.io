@@ -19,6 +19,7 @@
     if (enteredCode === temporaryCode) {
       world.style.display = "none";
       dashboard.classList.add("active");
+      document.body.classList.add("sgsw-dashboard-mode");
 
       window.scrollTo({
         top: dashboard.offsetTop,
@@ -31,6 +32,7 @@
 
   backButton.addEventListener("click", () => {
     dashboard.classList.remove("active");
+    document.body.classList.remove("sgsw-dashboard-mode");
     world.style.display = "";
 
     world.scrollIntoView({
