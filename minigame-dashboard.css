@@ -133,3 +133,33 @@
     min-height: 160px;
   }
 }
+/* SGS FULLSCREEN DEVELOPER MODE */
+
+body.sgsw-dashboard-mode {
+  overflow: hidden;
+}
+
+body.sgsw-dashboard-mode > *:not(main) {
+  display: none !important;
+}
+
+body.sgsw-dashboard-mode main > *:not(#sgsDeveloperDashboard) {
+  display: none !important;
+}
+
+body.sgsw-dashboard-mode #sgsDeveloperDashboard {
+  display: block !important;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  margin: 0;
+  padding: 35px 22px;
+  overflow-y: auto;
+
+  background:
+    radial-gradient(ellipse at 50% 0%, #173c62, transparent 65%),
+    linear-gradient(145deg, #091a30, #050d19);
+  }
