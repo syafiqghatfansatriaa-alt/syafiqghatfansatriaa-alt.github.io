@@ -1,0 +1,347 @@
+/* =========================================
+   SGS BRAIN CHALLENGE — FUTURISTIC LOBBY
+   VEKTOR & KIBOY ANIMATION SYSTEM
+========================================= */
+
+#sgswBrainGame {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  padding: 25px;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(ellipse at 50% 35%, #174c91 0%, transparent 55%),
+    linear-gradient(145deg, #07152e, #102c55 55%, #050d20);
+}
+
+/* Atmospheric lighting */
+
+#sgswBrainGame::before,
+#sgswBrainGame::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(65px);
+  z-index: -1;
+}
+
+#sgswBrainGame::before {
+  width: 280px;
+  height: 280px;
+  background: #168bff55;
+  top: 5%;
+  left: 5%;
+}
+
+#sgswBrainGame::after {
+  width: 300px;
+  height: 300px;
+  background: #e6a83235;
+  bottom: 0;
+  right: 5%;
+}
+
+/* Character stage */
+
+.sgsw-character-stage {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  position: relative;
+  z-index: 3;
+  max-width: 1050px;
+  margin: 0 auto 25px;
+}
+
+.sgsw-character-card {
+  position: relative;
+  padding: 18px;
+  text-align: center;
+  border: 1px solid #70caff80;
+  border-radius: 22px;
+  background: linear-gradient(
+    145deg,
+    #153e70dd,
+    #07172eea
+  );
+  box-shadow:
+    0 0 25px #168bff30,
+    inset 0 0 20px #ffffff08;
+  animation: sgsCharacterIdle 4s ease-in-out infinite;
+}
+
+.sgsw-kiboy {
+  animation-delay: 1s;
+  border-color: #45eaff90;
+}
+
+.sgsw-character-avatar {
+  font-size: 76px;
+  animation: sgsCharacterBreathing 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px #50baff);
+}
+
+.sgsw-robot-avatar {
+  filter: drop-shadow(0 0 18px #31eaff);
+  animation: sgsRobotHover 2.5s ease-in-out infinite;
+}
+
+.sgsw-character-name {
+  color: #ffd77e;
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.sgsw-character-card > span {
+  display: block;
+  color: #75dcff;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+
+.sgsw-character-card p {
+  min-height: 45px;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 12px;
+  background: #ffffff12;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Main question panel */
+
+.sgsw-game-panel {
+  position: relative;
+  z-index: 2;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 28px;
+  border: 2px solid #65baff;
+  border-radius: 28px;
+  background: linear-gradient(
+    145deg,
+    #102e61f5,
+    #06152ff5
+  );
+  box-shadow:
+    0 0 30px #168bff55,
+    inset 0 0 25px #3c8cff20;
+  animation: sgsPanelEnter 0.8s ease both;
+}
+
+.sgsw-game-top {
+  color: #ffd77e;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.sgsw-game-question {
+  margin: 25px 0;
+  padding: 25px;
+  border: 1px solid #5bbaff;
+  border-radius: 18px;
+  background: #061b40;
+  box-shadow: 0 0 18px #168bff35;
+  color: #fff;
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+/* Answer buttons */
+
+.sgsw-answer-list {
+  display: grid;
+  gap: 13px;
+}
+
+.sgsw-answer {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid #6bbdff;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #102c5a, #071a39);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: left;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.sgsw-answer:active {
+  transform: scale(.97);
+}
+
+.sgsw-answer.correct {
+  border-color: #53ffb0;
+  background: #126b51;
+  box-shadow: 0 0 20px #53ffb080;
+}
+
+.sgsw-answer.wrong {
+  border-color: #ff7777;
+  background: #702b42;
+}
+
+/* Feedback */
+
+.sgsw-feedback {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 14px;
+  background: #ffffff12;
+  color: #ffda83;
+  line-height: 1.6;
+}
+
+/* Buttons */
+
+.sgsw-game-button {
+  border: 1px solid #ffe19a;
+  border-radius: 30px;
+  padding: 14px 25px;
+  background: linear-gradient(135deg, #ffe69b, #e99d27);
+  color: #172443;
+  font-weight: 900;
+  box-shadow: 0 0 20px #f7c45b55;
+}
+
+.sgsw-game-back {
+  border: 1px solid #75caff;
+  border-radius: 25px;
+  padding: 10px 20px;
+  background: #0a2045;
+  color: white;
+}
+
+/* Lobby atmosphere particles */
+
+.sgsw-game-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sgsw-game-atmosphere span {
+  position: absolute;
+  bottom: -20px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8ceaff;
+  box-shadow: 0 0 15px 4px #35aaff;
+  animation: sgsParticleRise 8s linear infinite;
+}
+
+.sgsw-game-atmosphere span:nth-child(1) {
+  left: 10%;
+}
+
+.sgsw-game-atmosphere span:nth-child(2) {
+  left: 30%;
+  animation-delay: 2s;
+}
+
+.sgsw-game-atmosphere span:nth-child(3) {
+  left: 55%;
+  animation-delay: 4s;
+}
+
+.sgsw-game-atmosphere span:nth-child(4) {
+  left: 75%;
+  animation-delay: 1s;
+}
+
+.sgsw-game-atmosphere span:nth-child(5) {
+  left: 90%;
+  animation-delay: 3s;
+}
+
+/* Character animations */
+
+@keyframes sgsCharacterIdle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes sgsCharacterBreathing {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+@keyframes sgsRobotHover {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+@keyframes sgsPanelEnter {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sgsParticleRise {
+  from {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  20% { opacity: 1; }
+  to {
+    transform: translateY(-700px);
+    opacity: 0;
+  }
+}
+
+/* Mobile adaptation */
+
+@media (max-width: 600px) {
+  #sgswBrainGame {
+    padding: 15px 10px;
+  }
+
+  .sgsw-character-stage {
+    gap: 9px;
+  }
+
+  .sgsw-character-card {
+    padding: 13px 8px;
+  }
+
+  .sgsw-character-avatar {
+    font-size: 52px;
+  }
+
+  .sgsw-character-name {
+    font-size: 15px;
+  }
+
+  .sgsw-character-card p {
+    font-size: 11px;
+  }
+
+  .sgsw-game-panel {
+    padding: 17px 12px;
+  }
+
+  .sgsw-game-question {
+    font-size: 18px;
+    padding: 18px;
+  }
+
+  .sgsw-answer {
+    font-size: 15px;
+    padding: 13px;
+  }
+}
