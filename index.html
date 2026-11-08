@@ -177,7 +177,7 @@
 
   <div class="sgsw-dashboard-grid">
 
-    <article class="sgsw-dev-card">
+    <article class="sgsw-dev-card" id="sgswBrainCard">
       <div class="dev-icon">🧩</div>
       <small>GAME 01</small>
       <h3>Brain Challenge</h3>
@@ -210,7 +210,41 @@
     </article>
 
   </div>
+<section id="sgswBrainGame" class="sgsw-game-screen">
 
+  <button id="sgswBrainBack" class="sgsw-game-back">
+    ← KEMBALI KE DASHBOARD
+  </button>
+
+  <div class="sgsw-game-panel">
+
+    <div class="sgsw-game-top">
+      <span>SGS BRAIN CHALLENGE</span>
+      <span id="sgswQuestionNumber">QUESTION 1 / 500</span>
+    </div>
+
+    <div class="sgsw-progress">
+      <div id="sgswProgressFill" class="sgsw-progress-fill"></div>
+    </div>
+
+    <h2 id="sgswQuestion" class="sgsw-game-question">
+      Selamat datang di Brain Challenge!
+    </h2>
+
+    <div id="sgswAnswers" class="sgsw-answer-list"></div>
+
+    <p id="sgswFeedback" class="sgsw-feedback">
+      Bersiaplah menguji kemampuan berpikirmu!
+    </p>
+
+    <button id="sgswNextQuestion" class="sgsw-game-button" disabled>
+      LANJUTKAN →
+    </button>
+
+    <div id="sgswScore">SKOR: 0</div>
+
+  </div>
+  </section>
   <div class="sgsw-dashboard-actions">
     <button class="sgsw-dashboard-back" id="sgswBackToWorld">
       ← KEMBALI KE MINIGAME WORLD
