@@ -163,3 +163,110 @@ body.sgsw-dashboard-mode #sgsDeveloperDashboard {
     radial-gradient(ellipse at 50% 0%, #173c62, transparent 65%),
     linear-gradient(145deg, #091a30, #050d19);
   }
+/* SGS BRAIN CHALLENGE ARENA */
+
+.sgsw-game-screen {
+  display: none;
+  max-width: 850px;
+  margin: 25px auto;
+  animation: brainEnter .5s ease;
+}
+
+.sgsw-game-screen.active {
+  display: block;
+}
+
+.sgsw-game-panel {
+  padding: 25px;
+  border: 1px solid #dfbd7060;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #183653, #081426);
+  box-shadow: 0 20px 50px #0005;
+}
+
+.sgsw-game-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: #e4c67f;
+  font-size: 12px;
+}
+
+.sgsw-game-question {
+  margin: 30px 0 22px;
+  font-size: clamp(20px, 4vw, 29px);
+  line-height: 1.4;
+}
+
+.sgsw-answer-list {
+  display: grid;
+  gap: 12px;
+}
+
+.sgsw-answer {
+  padding: 15px;
+  border: 1px solid #75baff55;
+  border-radius: 13px;
+  background: #ffffff0a;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sgsw-feedback {
+  min-height: 28px;
+  margin: 18px 0;
+  color: #e4c67f;
+  font-size: 14px;
+}
+
+.sgsw-game-button {
+  padding: 13px 20px;
+  border: 1px solid #dfbd70;
+  border-radius: 30px;
+  background: #dfbd70;
+  color: #101b2b;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sgsw-game-button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.sgsw-progress {
+  height: 7px;
+  margin-top: 15px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #ffffff20;
+}
+
+.sgsw-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: #e4c67f;
+  transition: width .3s;
+}
+
+.sgsw-game-back {
+  margin-bottom: 18px;
+  border: 0;
+  background: transparent;
+  color: #e4c67f;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+@keyframes brainEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
