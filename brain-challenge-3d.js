@@ -19,6 +19,21 @@
   let animationId;
   let started = false;
   let clock = 0;
+ const startupStatus = document.createElement("div");
+startupStatus.textContent = "SGS 3D: SCRIPT LOADED";
+startupStatus.style.cssText = `
+  position:fixed;
+  top:10px;
+  left:10px;
+  right:10px;
+  z-index:1000000;
+  padding:12px;
+  background:#071426;
+  color:white;
+  border:1px solid #69bfff;
+  text-align:center;
+`;
+document.body.appendChild(startupStatus);
 
   const animatedObjects = [];
   const particleSystems = [];
@@ -116,11 +131,12 @@
   /* ---------- INITIALIZATION ---------- */
 
   async function initialize() {
+    startupStatus.textContent = "SGS 3D: INITIALIZATION STARTED";
     try {
       THREE = await import(
         "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
       );
-
+startupStatus.textContent = "SGS 3D: THREE.JS LOADED";
       scene = new THREE.Scene();
       scene.background = new THREE.Color(0x071426);
       scene.fog = new THREE.FogExp2(0x071426, 0.009);
@@ -161,6 +177,7 @@
       animate();
 
       console.log("SGS 3D LIBRARY: READY");
+     startupStatus.textContent = "SGS 3D: RENDERER READY";
 } catch (error) {
   console.error("SGS 3D Library Error:", error);
 
