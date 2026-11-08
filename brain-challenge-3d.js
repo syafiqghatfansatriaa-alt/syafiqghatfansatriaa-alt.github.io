@@ -7,7 +7,13 @@
 
 (() => {
   const game = document.getElementById("sgswBrainGame");
-  if (!game || game.dataset.sgs3dReady === "true") return;
+
+if (!game) {
+  alert("SGS 3D: GAME ELEMENT NOT FOUND");
+  return;
+}
+
+if (game.dataset.sgs3dReady === "true") return;
 
   game.dataset.sgs3dReady = "true";
 
