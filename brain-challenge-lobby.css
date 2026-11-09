@@ -1,347 +1,354 @@
-/* =========================================
-   SGS BRAIN CHALLENGE — FUTURISTIC LOBBY
-   VEKTOR & KIBOY ANIMATION SYSTEM
-========================================= */
+/* SGS BRAIN CHALLENGE — IMAGE-INSPIRED TRIAL UI */
 
 #sgswBrainGame {
   position: relative;
   isolation: isolate;
+  display: none;
   min-height: 100vh;
-  padding: 25px;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: none;
+  padding: clamp(14px, 2.4vw, 32px);
   overflow: hidden;
   color: #fff;
   background:
-    radial-gradient(ellipse at 50% 35%, #174c91 0%, transparent 55%),
-    linear-gradient(145deg, #07152e, #102c55 55%, #050d20);
+    radial-gradient(ellipse at 50% 8%, rgba(62,139,220,.45), transparent 48%),
+    linear-gradient(145deg, #071426 0%, #102b4c 52%, #081426 100%);
+  grid-template-columns: minmax(145px,.78fr) minmax(0,2.1fr) minmax(145px,.78fr);
+  grid-template-rows: auto minmax(0,1fr);
+  align-items: center;
+  gap: 18px;
 }
 
-/* Atmospheric lighting */
-
-#sgswBrainGame::before,
-#sgswBrainGame::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  border-radius: 50%;
-  filter: blur(65px);
-  z-index: -1;
+#sgswBrainGame.active {
+  display: grid;
 }
 
 #sgswBrainGame::before {
-  width: 280px;
-  height: 280px;
-  background: #168bff55;
-  top: 5%;
-  left: 5%;
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(94,171,255,.08), transparent);
 }
 
-#sgswBrainGame::after {
-  width: 300px;
-  height: 300px;
-  background: #e6a83235;
-  bottom: 0;
-  right: 5%;
+.sgsw-game-back {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  justify-self: start;
+  z-index: 5;
+  padding: 10px 17px;
+  border: 1px solid #79caff;
+  border-radius: 24px;
+  background: #0a2045;
+  color: #fff;
+  font-weight: 800;
 }
-
-/* Character stage */
 
 .sgsw-character-stage {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-  position: relative;
-  z-index: 3;
-  max-width: 1050px;
-  margin: 0 auto 25px;
+  display: contents;
 }
 
 .sgsw-character-card {
   position: relative;
-  padding: 18px;
+  z-index: 2;
+  align-self: center;
   text-align: center;
-  border: 1px solid #70caff80;
+  padding: 16px 10px;
+  border: 1px solid rgba(115,198,255,.75);
   border-radius: 22px;
-  background: linear-gradient(
-    145deg,
-    #153e70dd,
-    #07172eea
-  );
-  box-shadow:
-    0 0 25px #168bff30,
-    inset 0 0 20px #ffffff08;
-  animation: sgsCharacterIdle 4s ease-in-out infinite;
+  background: linear-gradient(155deg, rgba(23,62,108,.92), rgba(5,19,40,.94));
+  box-shadow: 0 12px 35px rgba(0,0,0,.35), inset 0 0 22px rgba(83,170,255,.1);
+  animation: sgsFloat 4s ease-in-out infinite;
+}
+
+.sgsw-vektor {
+  grid-column: 1;
+  grid-row: 2;
 }
 
 .sgsw-kiboy {
+  grid-column: 3;
+  grid-row: 2;
   animation-delay: 1s;
-  border-color: #45eaff90;
+  border-color: rgba(75,230,255,.8);
 }
 
 .sgsw-character-avatar {
-  font-size: 76px;
-  animation: sgsCharacterBreathing 3s ease-in-out infinite;
-  filter: drop-shadow(0 0 15px #50baff);
+  font-size: clamp(42px,5vw,76px);
+  line-height: 1.2;
+  filter: drop-shadow(0 0 13px rgba(83,184,255,.65));
 }
 
 .sgsw-robot-avatar {
-  filter: drop-shadow(0 0 18px #31eaff);
-  animation: sgsRobotHover 2.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px rgba(50,230,255,.8));
 }
 
 .sgsw-character-name {
-  color: #ffd77e;
-  font-size: 21px;
+  margin-top: 8px;
+  color: #ffdc91;
+  font-size: clamp(14px,1.5vw,20px);
   font-weight: 900;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
 }
 
 .sgsw-character-card > span {
   display: block;
-  color: #75dcff;
-  font-size: 10px;
-  letter-spacing: 2px;
-  margin-top: 5px;
+  margin-top: 4px;
+  color: #80dfff;
+  font-size: 9px;
+  letter-spacing: 1.5px;
 }
 
 .sgsw-character-card p {
-  min-height: 45px;
-  padding: 12px;
-  margin-top: 12px;
+  margin: 10px 0 0;
+  padding: 9px 7px;
+  min-height: 54px;
   border-radius: 12px;
-  background: #ffffff12;
-  color: #fff;
-  font-size: 13px;
-  line-height: 1.6;
+  background: rgba(255,255,255,.08);
+  font-size: 11px;
+  line-height: 1.45;
 }
-
-/* Main question panel */
-
-.sgsw-game-panel {
-  position: relative;
-  z-index: 2;
-  max-width: 850px;
-  margin: 0 auto;
-  padding: 28px;
-  border: 2px solid #65baff;
-  border-radius: 28px;
-  background: linear-gradient(
-    145deg,
-    #102e61f5,
-    #06152ff5
-  );
-  box-shadow:
-    0 0 30px #168bff55,
-    inset 0 0 25px #3c8cff20;
-  animation: sgsPanelEnter 0.8s ease both;
-}
-
-.sgsw-game-top {
-  color: #ffd77e;
-  font-weight: 900;
-  letter-spacing: 2px;
-}
-
-.sgsw-game-question {
-  margin: 25px 0;
-  padding: 25px;
-  border: 1px solid #5bbaff;
-  border-radius: 18px;
-  background: #061b40;
-  box-shadow: 0 0 18px #168bff35;
-  color: #fff;
-  font-size: 22px;
-  line-height: 1.5;
-}
-
-/* Answer buttons */
-
-.sgsw-answer-list {
-  display: grid;
-  gap: 13px;
-}
-
-.sgsw-answer {
-  width: 100%;
-  padding: 15px 20px;
-  border: 2px solid #6bbdff;
-  border-radius: 30px;
-  background: linear-gradient(90deg, #102c5a, #071a39);
-  color: #fff;
-  font-size: 17px;
-  font-weight: 700;
-  text-align: left;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-
-.sgsw-answer:active {
-  transform: scale(.97);
-}
-
-.sgsw-answer.correct {
-  border-color: #53ffb0;
-  background: #126b51;
-  box-shadow: 0 0 20px #53ffb080;
-}
-
-.sgsw-answer.wrong {
-  border-color: #ff7777;
-  background: #702b42;
-}
-
-/* Feedback */
-
-.sgsw-feedback {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 14px;
-  background: #ffffff12;
-  color: #ffda83;
-  line-height: 1.6;
-}
-
-/* Buttons */
-
-.sgsw-game-button {
-  border: 1px solid #ffe19a;
-  border-radius: 30px;
-  padding: 14px 25px;
-  background: linear-gradient(135deg, #ffe69b, #e99d27);
-  color: #172443;
-  font-weight: 900;
-  box-shadow: 0 0 20px #f7c45b55;
-}
-
-.sgsw-game-back {
-  border: 1px solid #75caff;
-  border-radius: 25px;
-  padding: 10px 20px;
-  background: #0a2045;
-  color: white;
-}
-
-/* Lobby atmosphere particles */
 
 .sgsw-game-atmosphere {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 0;
   overflow: hidden;
   pointer-events: none;
 }
 
 .sgsw-game-atmosphere span {
   position: absolute;
-  bottom: -20px;
-  width: 6px;
-  height: 6px;
+  bottom: -15px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: #8ceaff;
-  box-shadow: 0 0 15px 4px #35aaff;
-  animation: sgsParticleRise 8s linear infinite;
+  box-shadow: 0 0 13px 4px #35aaff;
+  animation: sgsRise 9s linear infinite;
 }
 
-.sgsw-game-atmosphere span:nth-child(1) {
-  left: 10%;
+.sgsw-game-atmosphere span:nth-child(1) { left: 10%; }
+.sgsw-game-atmosphere span:nth-child(2) { left: 30%; animation-delay: 2s; }
+.sgsw-game-atmosphere span:nth-child(3) { left: 55%; animation-delay: 4s; }
+.sgsw-game-atmosphere span:nth-child(4) { left: 75%; animation-delay: 1s; }
+.sgsw-game-atmosphere span:nth-child(5) { left: 90%; animation-delay: 3s; }
+
+.sgsw-game-panel {
+  grid-column: 2;
+  grid-row: 2;
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 850px;
+  justify-self: center;
+  padding: clamp(18px,2.5vw,30px);
+  border: 2px solid #68bfff;
+  border-radius: 26px;
+  background: linear-gradient(145deg, rgba(14,43,83,.97), rgba(4,17,39,.97));
+  box-shadow: 0 18px 55px rgba(0,0,0,.42), 0 0 28px rgba(38,145,255,.22);
+  animation: sgsPanelIn .55s ease both;
 }
 
-.sgsw-game-atmosphere span:nth-child(2) {
-  left: 30%;
-  animation-delay: 2s;
+.sgsw-game-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: #ffda8b;
+  font-size: clamp(10px,1vw,13px);
+  font-weight: 900;
+  letter-spacing: 1.2px;
 }
 
-.sgsw-game-atmosphere span:nth-child(3) {
-  left: 55%;
-  animation-delay: 4s;
+.sgsw-progress {
+  height: 8px;
+  margin-top: 13px;
+  border-radius: 20px;
+  background: #203b5d;
+  overflow: hidden;
 }
 
-.sgsw-game-atmosphere span:nth-child(4) {
-  left: 75%;
-  animation-delay: 1s;
+.sgsw-progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 20px;
+  background: linear-gradient(90deg,#40caff,#ffcf73);
+  transition: width .35s ease;
 }
 
-.sgsw-game-atmosphere span:nth-child(5) {
-  left: 90%;
-  animation-delay: 3s;
+.sgsw-game-question {
+  margin: 20px 0;
+  padding: clamp(16px,2vw,24px);
+  border: 1px solid rgba(105,190,255,.75);
+  border-radius: 18px;
+  background: linear-gradient(135deg,#0b2850,#071a35);
+  color: #fff;
+  font-size: clamp(17px,2vw,23px);
+  line-height: 1.45;
+  text-align: center;
 }
 
-/* Character animations */
+.sgsw-answer-list {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 11px;
+}
 
-@keyframes sgsCharacterIdle {
-  0%, 100% { transform: translateY(0); }
+.sgsw-answer {
+  width: 100%;
+  min-height: 52px;
+  padding: 13px 15px;
+  border: 1.5px solid #68bfff;
+  border-radius: 14px;
+  background: linear-gradient(100deg,#123762,#0a2040);
+  color: #fff;
+  font-size: clamp(13px,1.3vw,16px);
+  font-weight: 750;
+  text-align: left;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.sgsw-answer:active {
+  transform: scale(.98);
+}
+
+.sgsw-answer:disabled {
+  opacity: 1;
+}
+
+.sgsw-answer.correct {
+  border-color: #58f0b1;
+  background: #126448;
+  box-shadow: 0 0 16px #53ffb055;
+}
+
+.sgsw-answer.wrong {
+  border-color: #ff8585;
+  background: #702b42;
+}
+
+.sgsw-feedback {
+  min-height: 40px;
+  margin: 15px 0 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.08);
+  color: #ffdc91;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.sgsw-game-button {
+  display: block;
+  width: 100%;
+  padding: 14px 22px;
+  border: 1px solid #ffe19a;
+  border-radius: 14px;
+  background: linear-gradient(135deg,#ffe69b,#e99d27);
+  color: #172443;
+  font-weight: 950;
+  letter-spacing: .7px;
+}
+
+.sgsw-game-button:disabled {
+  opacity: .45;
+}
+
+#sgswScore {
+  margin-top: 13px;
+  color: #8edbff;
+  font-size: 13px;
+  font-weight: 900;
+  text-align: right;
+  letter-spacing: 1px;
+}
+
+@keyframes sgsFloat {
+  0%,100% { transform: translateY(0); }
   50% { transform: translateY(-7px); }
 }
 
-@keyframes sgsCharacterBreathing {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.035); }
+@keyframes sgsPanelIn {
+  from { opacity: 0; transform: translateY(14px) scale(.99); }
+  to { opacity: 1; transform: none; }
 }
 
-@keyframes sgsRobotHover {
-  0%, 100% { transform: translateY(0) rotate(-3deg); }
-  50% { transform: translateY(-12px) rotate(3deg); }
+@keyframes sgsRise {
+  0% { transform: translateY(0); opacity: 0; }
+  20% { opacity: .8; }
+  100% { transform: translateY(-80vh); opacity: 0; }
 }
 
-@keyframes sgsPanelEnter {
-  from {
-    opacity: 0;
-    transform: translateY(25px) scale(.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes sgsParticleRise {
-  from {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  20% { opacity: 1; }
-  to {
-    transform: translateY(-700px);
-    opacity: 0;
-  }
-}
-
-/* Mobile adaptation */
-
-@media (max-width: 600px) {
+/* Tampilan HP */
+@media (max-width:760px) {
   #sgswBrainGame {
-    padding: 15px 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 10px;
+    padding: 12px 10px;
   }
 
-  .sgsw-character-stage {
-    gap: 9px;
-  }
-
-  .sgsw-character-card {
-    padding: 13px 8px;
-  }
-
-  .sgsw-character-avatar {
-    font-size: 52px;
-  }
-
-  .sgsw-character-name {
-    font-size: 15px;
-  }
-
-  .sgsw-character-card p {
+  .sgsw-game-back {
+    grid-column: 1 / -1;
+    grid-row: 1;
     font-size: 11px;
   }
 
+  .sgsw-character-stage {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .sgsw-vektor,
+  .sgsw-kiboy {
+    grid-row: auto;
+    grid-column: auto;
+  }
+
+  .sgsw-character-card {
+    padding: 10px 8px;
+    border-radius: 16px;
+  }
+
+  .sgsw-character-avatar { font-size: 43px; }
+  .sgsw-character-name { font-size: 14px; }
+
+  .sgsw-character-card p {
+    font-size: 10px;
+    min-height: 40px;
+    margin-top: 7px;
+    padding: 7px 5px;
+  }
+
   .sgsw-game-panel {
-    padding: 17px 12px;
+    grid-column: 1 / -1;
+    grid-row: 3;
+    padding: 16px 12px;
+    border-radius: 20px;
   }
 
   .sgsw-game-question {
-    font-size: 18px;
-    padding: 18px;
+    margin: 14px 0;
+    padding: 15px 12px;
+    font-size: 17px;
+  }
+
+  .sgsw-answer-list {
+    grid-template-columns: 1fr;
+    gap: 9px;
   }
 
   .sgsw-answer {
-    font-size: 15px;
-    padding: 13px;
+    min-height: 46px;
+    padding: 11px 13px;
+    font-size: 14px;
   }
-}
+
+  .sgsw-feedback { font-size: 12px; }
+     }
