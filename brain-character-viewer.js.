@@ -1,0 +1,336 @@
+
+/* SGS BRAIN CHALLENGE — 3D CHARACTER VIEWER
+   Letakkan file ini sejajar dengan index.html.
+
+   Model:
+   assets/vektor.glb
+   assets/kiboy.glb
+*/
+
+(() => {
+  "use strict";
+
+  const GAME_ID = "sgswBrainGame";
+
+  const THREE_URL =
+    "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js";
+
+  const LOADER_URL =
+    "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/loaders/GLTFLoader.js";
+
+  let started = false;
+  let threePromise;
+  let animationId = 0;
+
+  const viewers = [];
+
+  function loadThree() {
+    if (!threePromise) {
+      threePromise = Promise.all([
+        import(THREE_URL),
+        import(LOADER_URL)
+      ]).then(([THREE, loader]) => ({
+        THREE,
+        GLTFLoader: loader.GLTFLoader
+      }));
+    }
+
+    return threePromise;
+  }
+
+  function createViewer(
+    THREE,
+    GLTFLoader,
+    avatar,
+    modelUrl,
+    label,
+    scale
+  ) {
+    if (!avatar || avatar.dataset.viewerReady === "1") return;
+
+    avatar.dataset.viewerReady = "1";
+    avatar.replaceChildren();
+
+    const width = Math.max(120, avatar.clientWidth || 180);
+    const height = Math.max(120, avatar.clientHeight || 180);
+
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(
+      32,
+      width / height,
+      0.1,
+      100
+    );
+
+    camera.position.set(0, 1.15, 5.2);
+
+    const renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true,
+      powerPreference: "low-power"
+    });
+
+    renderer.setPixelRatio(
+      Math.min(window.devicePixelRatio || 1, 1.5)
+    );
+
+    renderer.setSize(width, height);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.setClearColor(0x000000, 0);
+
+    renderer.domElement.style.cssText =
+      "display:block;width:100%;height:100%;";
+
+    renderer.domElement.setAttribute(
+      "aria-label",
+      label + " 3D character"
+    );
+
+    avatar.appendChild(renderer.domElement);
+
+    scene.add(
+      new THREE.HemisphereLight(
+        0xffffff,
+        0x243b60,
+        2
+      )
+    );
+
+    const keyLight = new THREE.DirectionalLight(
+      0xffffff,
+      2.1
+    );
+
+    keyLight.position.set(3, 5, 4);
+    scene.add(keyLight);
+
+    const fillLight = new THREE.DirectionalLight(
+      0x70cfff,
+      1
+    );
+
+    fillLight.position.set(-4, 2, -2);
+    scene.add(fillLight);
+
+    const holder = new THREE.Group();
+    scene.add(holder);
+
+    const viewer = {
+      avatar,
+      camera,
+      holder,
+      renderer,
+      scene,
+      mixer: null,
+      clock: new THREE.Clock()
+    };
+
+    viewers.push(viewer);
+
+    new GLTFLoader().load(
+      modelUrl,
+
+      (gltf) => {
+        const model = gltf.scene;
+
+        model.scale.setScalar(scale);
+        model.position.set(0, -0.9, 0);
+
+        holder.add(model);
+
+        if (
+          gltf.animations &&
+          gltf.animations.length
+        ) {
+          viewer.mixer =
+            new THREE.AnimationMixer(model);
+
+          gltf.animations.forEach((clip) => {
+            viewer.mixer.clipAction(clip).play();
+          });
+        }
+      },
+
+      undefined,
+
+      (error) => {
+        console.error(
+          "SGS model gagal dimuat:",
+          modelUrl,
+          error
+        );
+
+        avatar.dataset.viewerError = "1";
+
+        renderer.dispose();
+
+        avatar.textContent =
+          label +
+          " belum dapat dimuat. Periksa file model di folder assets.";
+      }
+    );
+  }
+
+  function resizeAll() {
+    viewers.forEach((viewer) => {
+      if (!viewer.avatar.isConnected) return;
+
+      const width = Math.max(
+        1,
+        viewer.avatar.clientWidth
+      );
+
+      const height = Math.max(
+        1,
+        viewer.avatar.clientHeight
+      );
+
+      viewer.camera.aspect = width / height;
+
+      viewer.camera.updateProjectionMatrix();
+
+      viewer.renderer.setSize(
+        width,
+        height,
+        false
+      );
+    });
+  }
+
+  function animate() {
+    animationId = requestAnimationFrame(animate);
+
+    const time = performance.now() * 0.001;
+
+    viewers.forEach((viewer) => {
+      if (!viewer.avatar.isConnected) return;
+
+      if (viewer.mixer) {
+        viewer.mixer.update(
+          viewer.clock.getDelta()
+        );
+      }
+
+      // Gerakan melayang ringan
+      viewer.holder.position.y =
+        Math.sin(time * 1.4) * 0.035;
+
+      // Gerakan menoleh ringan
+      viewer.holder.rotation.y =
+        Math.sin(time * 0.55) * 0.08;
+
+      viewer.renderer.render(
+        viewer.scene,
+        viewer.camera
+      );
+    });
+  }
+
+  async function start() {
+    if (started) return;
+
+    const game = document.getElementById(GAME_ID);
+
+    if (!game) return;
+
+    const vektor = game.querySelector(
+      ".sgsw-vektor .sgsw-character-avatar"
+    );
+
+    const kiboy = game.querySelector(
+      ".sgsw-kiboy .sgsw-character-avatar"
+    );
+
+    if (!vektor || !kiboy) {
+      console.warn(
+        "SGS viewer: elemen karakter tidak ditemukan."
+      );
+
+      return;
+    }
+
+    started = true;
+
+    try {
+      const { THREE, GLTFLoader } =
+        await loadThree();
+
+      createViewer(
+        THREE,
+        GLTFLoader,
+        vektor,
+        "assets/vektor.glb",
+        "Vektor",
+        1
+      );
+
+      createViewer(
+        THREE,
+        GLTFLoader,
+        kiboy,
+        "assets/kiboy.glb",
+        "Kiboy",
+        1
+      );
+
+      window.addEventListener(
+        "resize",
+        resizeAll,
+        { passive: true }
+      );
+
+      if (!animationId) {
+        animate();
+      }
+
+    } catch (error) {
+      console.error(
+        "SGS 3D viewer gagal diinisialisasi:",
+        error
+      );
+
+      started = false;
+    }
+  }
+
+  function watchGame() {
+    const game = document.getElementById(GAME_ID);
+
+    if (!game) {
+      window.addEventListener(
+        "DOMContentLoaded",
+        watchGame,
+        { once: true }
+      );
+
+      return;
+    }
+
+    const observer = new MutationObserver(() => {
+      if (
+        game.classList.contains("active") ||
+        getComputedStyle(game).display !== "none"
+      ) {
+        observer.disconnect();
+        start();
+      }
+    });
+
+    observer.observe(game, {
+      attributes: true,
+      attributeFilter: ["class", "style"]
+    });
+
+    if (
+      game.classList.contains("active") ||
+      getComputedStyle(game).display !== "none"
+    ) {
+      observer.disconnect();
+      start();
+    }
+  }
+
+  watchGame();
+
+})();
