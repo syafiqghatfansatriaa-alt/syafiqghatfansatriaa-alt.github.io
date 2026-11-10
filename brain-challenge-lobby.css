@@ -224,3 +224,280 @@
     font-size: 10px;
   }
 }
+/* SGS BRAIN CHALLENGE — CONCEPT UI OVERRIDE */
+
+#sgswBrainGame {
+  background-size: cover;
+  background-position: center;
+}
+
+/* Judul utama */
+#sgswBrainGame::before {
+  content: "🧠 SGS BRAIN CHALLENGE";
+  position: absolute;
+  z-index: 8;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 28px;
+  width: max-content;
+  max-width: 55%;
+  border: 2px solid #59bdff;
+  border-radius: 0 0 20px 20px;
+  background: linear-gradient(110deg, #061a3bed, #123d75ed);
+  color: #ffd36e;
+  font-size: clamp(17px, 2.5vw, 34px);
+  font-weight: 1000;
+  font-style: italic;
+  text-align: center;
+  box-shadow: 0 0 22px #35aaff88;
+}
+
+/* Tombol kembali */
+.sgsw-game-back {
+  z-index: 12;
+  top: 3%;
+  left: 2%;
+  padding: 10px 20px;
+  border: 2px solid #9bdcff;
+  border-radius: 30px;
+  background: #071a35;
+  color: white;
+  font-weight: 900;
+  box-shadow: 0 0 14px #37aaff66;
+}
+
+/* Tampilkan Vektor dan Kiboy */
+.sgsw-character-stage {
+  display: block !important;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.sgsw-character-card {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 12px;
+  border: 1px solid #66c8ff;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #05183eee, #082c58cc);
+  box-shadow: 0 0 20px #31aaff55;
+  text-align: center;
+}
+
+.sgsw-vektor {
+  left: 2%;
+  top: 34%;
+  width: 24%;
+}
+
+.sgsw-kiboy {
+  right: 1.5%;
+  bottom: 3%;
+  width: 13%;
+}
+
+.sgsw-character-avatar {
+  display: grid;
+  place-items: center;
+  width: clamp(60px, 8vw, 115px);
+  height: clamp(60px, 8vw, 115px);
+  border: 2px solid #7bd5ff;
+  border-radius: 50%;
+  background: radial-gradient(circle, #1d5b9a, #071b3d);
+  font-size: clamp(38px, 5vw, 72px);
+  box-shadow: 0 0 18px #39baff88;
+}
+
+.sgsw-kiboy .sgsw-character-avatar {
+  width: clamp(45px, 5vw, 75px);
+  height: clamp(45px, 5vw, 75px);
+}
+
+.sgsw-character-name {
+  color: #ffd36e;
+  font-weight: 1000;
+  letter-spacing: 1px;
+}
+
+.sgsw-character-card > span {
+  color: #91d9ff;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.sgsw-character-card p {
+  color: white;
+  font-size: clamp(9px, 1vw, 14px);
+  line-height: 1.4;
+}
+
+/* Panel pertanyaan */
+.sgsw-game-panel {
+  left: 28%;
+  top: 27%;
+  width: 64%;
+  height: 68%;
+  padding: 2% 2.2%;
+  border: 3px solid #65c5ff;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #041336f7, #07244ff5);
+  box-shadow: 0 0 28px #36aaff88;
+  overflow-y: auto;
+}
+
+.sgsw-game-top {
+  color: #ffe08b;
+  font-size: clamp(11px, 1.25vw, 17px);
+  font-weight: 1000;
+}
+
+.sgsw-progress {
+  height: 12px;
+  margin: 12px 0 18px;
+  border: 1px solid #83caff;
+  border-radius: 20px;
+  background: #142d59;
+}
+
+.sgsw-progress-fill {
+  background: linear-gradient(90deg, #ffc34f, #fff0a6);
+  box-shadow: 0 0 12px #ffcf62;
+}
+
+.sgsw-game-question {
+  padding: 17px 20px;
+  border: 2px solid #63bfff;
+  border-radius: 22px;
+  background: linear-gradient(110deg, #0b2a5b, #071d45);
+  color: white;
+  font-size: clamp(17px, 2vw, 29px);
+  line-height: 1.4;
+  box-shadow: inset 0 0 16px #2b8ee733;
+}
+
+.sgsw-answer-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.sgsw-answer {
+  min-height: 46px;
+  padding: 9px 18px;
+  border: 2px solid #77caff;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #12396f, #081e45);
+  color: white;
+  font-size: clamp(13px, 1.4vw, 19px);
+  font-weight: 850;
+  box-shadow: 0 0 9px #36aaff44;
+}
+
+.sgsw-answer.correct {
+  border-color: #69ffc0;
+  background: #126448;
+}
+
+.sgsw-answer.wrong {
+  border-color: #ff9292;
+  background: #762c46;
+}
+
+.sgsw-feedback {
+  padding: 9px 13px;
+  border: 1px solid #e6bd63;
+  border-radius: 14px;
+  background: #122b53;
+  color: #ffdf91;
+}
+
+.sgsw-game-button {
+  padding: 12px 18px;
+  border: 2px solid #ffe4a0;
+  border-radius: 30px;
+  background: linear-gradient(110deg, #ffe89e, #f4b33f);
+  color: #172443;
+  font-size: clamp(13px, 1.4vw, 19px);
+  font-weight: 1000;
+  box-shadow: 0 0 16px #ffcf6688;
+}
+
+/* Skor di sudut kanan atas panel */
+#sgswScore {
+  margin-top: 10px;
+  color: #ffda72;
+  font-weight: 1000;
+  text-align: right;
+}
+
+/* Tampilan HP portrait */
+@media (max-width: 760px) and (orientation: portrait) {
+  #sgswBrainGame {
+    background-size: cover;
+  }
+
+  #sgswBrainGame::before {
+    top: 10px;
+    max-width: 52%;
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .sgsw-game-back {
+    top: 10px;
+    left: 8px;
+    padding: 7px 10px;
+    font-size: 9px;
+  }
+
+  .sgsw-vektor {
+    left: 3%;
+    top: 16%;
+    width: 28%;
+    padding: 7px;
+  }
+
+  .sgsw-kiboy {
+    right: 2%;
+    bottom: 2%;
+    width: 21%;
+    padding: 6px;
+  }
+
+  .sgsw-character-avatar {
+    width: 45px;
+    height: 45px;
+    font-size: 29px;
+  }
+
+  .sgsw-kiboy .sgsw-character-avatar {
+    width: 38px;
+    height: 38px;
+  }
+
+  .sgsw-character-name { font-size: 9px; }
+  .sgsw-character-card > span { font-size: 7px; }
+  .sgsw-character-card p { font-size: 8px; }
+
+  .sgsw-game-panel {
+    left: 5%;
+    top: 35%;
+    width: 90%;
+    height: 60%;
+    padding: 12px;
+    border-radius: 18px;
+  }
+
+  .sgsw-game-top { font-size: 10px; }
+  .sgsw-progress { height: 7px; margin: 8px 0 12px; }
+  .sgsw-game-question { padding: 11px; font-size: 15px; }
+  .sgsw-answer { min-height: 37px; padding: 7px 12px; font-size: 12px; }
+  .sgsw-feedback { font-size: 10px; }
+  .sgsw-game-button { padding: 9px; font-size: 12px; }
+}
