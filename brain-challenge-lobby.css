@@ -654,3 +654,185 @@
     padding: 6px 12px;
   }
 }
+/* SGS BRAIN CHALLENGE — CONCEPT COLOR PALETTE */
+
+#sgswBrainGame {
+  color: #ffffff;
+}
+
+/* Header */
+#sgswBrainGame::before {
+  background: linear-gradient(
+    110deg,
+    #073b83,
+    #0756a8,
+    #092c68
+  ) !important;
+  border-color: #55caff !important;
+  color: #ffd66b !important;
+  box-shadow:
+    0 0 12px #45baff,
+    0 0 30px #168cff88 !important;
+}
+
+/* Kartu karakter */
+.sgsw-character-card {
+  background: linear-gradient(
+    145deg,
+    #104b91ee,
+    #082c67eF,
+    #061e4ddd
+  ) !important;
+  border: 2px solid #63caff !important;
+  box-shadow:
+    0 0 16px #38aaff88,
+    inset 0 0 20px #55baff33 !important;
+}
+
+.sgsw-character-avatar {
+  background: radial-gradient(
+    circle,
+    #328ee0,
+    #0750a0 65%,
+    #06295e
+  ) !important;
+  border-color: #8bdcff !important;
+  box-shadow: 0 0 20px #42baff !important;
+}
+
+.sgsw-character-name {
+  color: #ffdb75 !important;
+}
+
+.sgsw-character-card > span {
+  color: #a9e5ff !important;
+}
+
+/* Panel pertanyaan */
+.sgsw-game-panel {
+  background: linear-gradient(
+    145deg,
+    #104b91f5,
+    #073878f5,
+    #06285ff5
+  ) !important;
+  border: 3px solid #65caff !important;
+  box-shadow:
+    0 0 15px #46baff,
+    0 0 32px #168cff88,
+    inset 0 0 24px #56baff33 !important;
+}
+
+/* Informasi soal dan progres */
+.sgsw-game-top {
+  color: #ffdc7c !important;
+}
+
+.sgsw-progress {
+  background: #09275b !important;
+  border: 2px solid #79caff !important;
+}
+
+.sgsw-progress-fill {
+  background: linear-gradient(
+    90deg,
+    #ffb92e,
+    #ffe17b,
+    #fff3b4
+  ) !important;
+  box-shadow: 0 0 14px #ffd45c !important;
+}
+
+/* Kotak pertanyaan */
+.sgsw-game-question {
+  background: linear-gradient(
+    110deg,
+    #0d3d80,
+    #082c68
+  ) !important;
+  border: 2px solid #78ceff !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 0 12px #3daaff66,
+    inset 0 0 18px #398fff33 !important;
+}
+
+/* Tombol jawaban */
+.sgsw-answer {
+  background: linear-gradient(
+    100deg,
+    #1765b5,
+    #104b96,
+    #0b3677
+  ) !important;
+  border: 2px solid #8bd7ff !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 0 8px #48baff88,
+    inset 0 0 12px #78caff22 !important;
+}
+
+.sgsw-answer:active {
+  background: linear-gradient(
+    100deg,
+    #328de0,
+    #1259a5
+  ) !important;
+}
+
+.sgsw-answer.correct {
+  background: linear-gradient(
+    100deg,
+    #168d67,
+    #075b48
+  ) !important;
+  border-color: #8dffd1 !important;
+}
+
+.sgsw-answer.wrong {
+  background: linear-gradient(
+    100deg,
+    #b33c54,
+    #76233f
+  ) !important;
+  border-color: #ffabb8 !important;
+}
+
+/* Kotak petunjuk */
+.sgsw-feedback {
+  background: linear-gradient(
+    100deg,
+    #123e78,
+    #08295b
+  ) !important;
+  border: 2px solid #e9bd61 !important;
+  color: #ffdf8b !important;
+}
+
+/* Tombol lanjutkan emas */
+.sgsw-game-button {
+  background: linear-gradient(
+    100deg,
+    #ffcf59,
+    #ffe99a,
+    #f5b536
+  ) !important;
+  border: 3px solid #fff0b0 !important;
+  color: #68400a !important;
+  box-shadow:
+    0 0 12px #ffd45c,
+    0 0 24px #ffbf4588,
+    inset 0 2px 8px #ffffff99 !important;
+}
+
+/* Skor */
+#sgswScore {
+  background: linear-gradient(
+    120deg,
+    #104b91,
+    #082b63
+  ) !important;
+  border: 2px solid #83d5ff !important;
+  color: #ffdc70 !important;
+  box-shadow: 0 0 16px #40baff99 !important;
+}
