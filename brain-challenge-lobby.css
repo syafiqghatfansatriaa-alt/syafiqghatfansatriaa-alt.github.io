@@ -836,3 +836,66 @@
   color: #ffdc70 !important;
   box-shadow: 0 0 16px #40baff99 !important;
 }
+/* SGS BRAIN CHALLENGE — TROPHY SCORE CARD */
+
+#sgswScore {
+  position: fixed !important;
+  z-index: 30 !important;
+  top: 18px !important;
+  right: 22px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+
+  width: 175px !important;
+  min-width: 175px !important;
+  min-height: 78px !important;
+  margin: 0 !important;
+  padding: 10px 14px !important;
+
+  border: 3px solid #65caff !important;
+  border-radius: 19px !important;
+
+  background: linear-gradient(
+    120deg,
+    #08265c,
+    #0750a0,
+    #061d49
+  ) !important;
+
+  color: #ffdc55 !important;
+  font-size: 27px !important;
+  font-weight: 1000 !important;
+  text-align: center !important;
+
+  box-shadow:
+    0 0 12px #42baff,
+    0 0 25px #168cff88,
+    inset 0 0 15px #4cbaff33 !important;
+}
+
+/* Ikon piala emas */
+#sgswScore::before {
+  content: "🏆";
+  display: inline-block;
+  font-size: 39px;
+  filter: drop-shadow(0 0 7px #ffc83d);
+}
+
+/* Penyesuaian layar landscape kecil */
+@media (orientation: landscape) and (max-height: 560px) {
+  #sgswScore {
+    top: 10px !important;
+    right: 12px !important;
+    width: 135px !important;
+    min-width: 135px !important;
+    min-height: 57px !important;
+    font-size: 20px !important;
+  }
+
+  #sgswScore::before {
+    font-size: 29px;
+  }
+}
